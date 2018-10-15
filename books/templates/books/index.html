@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Books</title>
+</head>
+<body>
+{% load static %}
+<link rel="stylesheet" tpye="text/css" href="{% static 'books/style.css' %}">
+<h1 class="">研发部's 书</h1>
+<hr/>
+<ul>
+    <table border="1">
+        <thead>
+        <tr>
+            <td>编 号</td>
+            <td style="align-items: center;">书 名</td>
+            <td>出版社</td>
+            <td>出版日期</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.book_no }}</td>
+                <td><a href="#">{{ book.title }}</a></td>
+                <td> {{ book.publisher }}</td>
+                <td> {{ book.publication_date }}</td>
+            </tr>
+        {% endfor %}
+        </tr>
+        </tbody>
+    </table>
+    <!-- 如果当前是第一页，就不显示【上一页】链接 -->
+    {% ifnotequal curPage 1 %}
+        <a href="?curPage={{ curPage }}&&allPage={{ allPage }}&&pageType=pageUp">
+            上一页
+        </a>
+    {% endifnotequal %}
+    第{{ curPage }}/{{ allPage }}页
+
+    <!-- 如果当前是最后一页，就不显示【下一页】链接 -->
+    {% ifnotequal curPage allPage %}
+        <a href="?curPage={{ curPage }}&&allPage={{ allPage }}&&pageType=pageDown">
+            下一页
+        </a>
+    {% endifnotequal %}
+</ul>
+
+<hr/>
+<span style="text-align:center;margin: 10px 10px 10px 60px;">
+        <a href="http://www.houxiurong.com">houxiruong</a>@copyright 侯秀荣
+    </span>
+<hr/>
+</body>
+</html>

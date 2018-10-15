@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Books</title>
+</head>
+<body>
+{% load static %}
+<link rel="stylesheet" tpye="text/css" href="{% static 'books/style.css' %}">
+
+<h1>All books</h1>
+    {% if errors %}
+        <ul>
+            {% for error in errors %}
+                <li><p style="color: red;">{{ error }}</p></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form action="/books/search/" method="get">
+        <input type="text" name="q">
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>

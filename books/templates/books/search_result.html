@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询结果</title>
+</head>
+<body>
+    <p>你查找的关键字是: <strong>{{ query }}</strong></p>
+
+    {% if books %}
+        <p>Found {{ books|length }} book{{ books|pluralize }}.</p>
+        <ul>
+            {% for book in books %}
+                <li>书名:{{ book.title }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>未找到你需要的书名。</p>
+    {% endif %}
+</body>
+</html>

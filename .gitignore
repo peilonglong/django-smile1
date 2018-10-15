@@ -1,0 +1,6 @@
+*.pyc
+dist
+django_helpdesk.egg-info
+
+.idea/
+*.xml
